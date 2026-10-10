@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>IMDB Sentiment Classifier</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="card">
+    <header>
+      <h1>🎬 Movie Review Sentiment</h1>
+      <p class="subtitle">A BERT model fine-tuned on IMDB reviews, running entirely in your browser.</p>
+    </header>
+
+    <div id="loader" class="loader">
+      <div class="loader-head">
+        <div class="spinner"></div>
+        <div class="loader-text" id="loader-text">Loading model...</div>
+      </div>
+      <div class="loader-track"><div class="loader-fill" id="loader-fill"></div></div>
+      <p class="loader-hint">
+        ⏳ <strong>First visit?</strong> Please wait a minute while the model downloads
+        to your browser. This only happens once, and next time it loads almost instantly.
+      </p>
+    </div>
+
+    <label for="text" class="label">Your review</label>
+    <textarea id="text" rows="5" maxlength="2000" placeholder="Paste or type a movie review..."></textarea>
+    <div class="meta"><span id="count">0 / 2000</span><span>Tip: Ctrl + Enter to analyze</span></div>
+
+    <div class="examples">
+      <span class="label">Try an example</span>
+      <button class="chip" data-text="An absolute masterpiece. The acting was superb and the story kept me hooked until the very last scene.">😍 Positive</button>
+      <button class="chip" data-text="Terrible movie. The plot made no sense, the dialogue was painful, and I regret wasting two hours on it.">😡 Negative</button>
+      <button class="chip" data-text="It had some good moments, but overall the pacing dragged and the ending felt rushed.">😐 Mixed</button>
+    </div>
+
+    <button id="btn" class="primary" disabled>Loading model...</button>
+
+    <section id="result" class="result hidden" aria-live="polite">
+      <div class="verdict" id="verdict"></div>
+      <div class="bars">
+        <div class="bar-row">
+          <span>Positive</span>
+          <div class="track"><div class="fill pos" id="bar-pos"></div></div>
+          <span id="pct-pos">0%</span>
+        </div>
+        <div class="bar-row">
+          <span>Negative</span>
+          <div class="track"><div class="fill neg" id="bar-neg"></div></div>
+          <span id="pct-neg">0%</span>
+        </div>
+      </div>
+    </section>
+
+    <footer>BERT · IMDB · Transformers.js</footer>
+  </main>
+  <script type="module" src="index.js"></script>
+</body>
+</html>

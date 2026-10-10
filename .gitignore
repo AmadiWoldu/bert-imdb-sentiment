@@ -1,0 +1,11 @@
+__pycache__/
+.gradio/
+bert_imdb_output/
+imdb_bert/
+onnx_output/
+onnx_quantized/
+hub_upload/
+*.safetensors
+*.bin
+*.onnx
+.ipynb_checkpoints/
